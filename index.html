@@ -43,9 +43,9 @@
         <li><button id="purchaseButton" type="button">Purchase</button></li>
         <li><button id="subcribeButton" type="button">Subscribe</button></li>
         <li><button id="registrationButton" type="button">Registration</button></li>
-   <li><button id="addToCartButtonCustom" type="button">AddToCartCustom</button></li>
-   <li><button id="addToCartButtonSingle" type="button">AddToCartSingle</button></li>
-       <li><button id="addToCartButtonCustom" type="button">AddToCartSingleCustom</button></li>
+    <li><button id="addToCartButtonCustom" type="button">Add to cart Custom</button></li>
+        <li><button id="addToCartButtonSingle" type="button">Add to cart Single</button></li>
+        <li><button id="addToCartButtonSingleCustom" type="button">Add to cart Single Custom</button></li>
     </ul>
     </div>
 
@@ -79,21 +79,23 @@ document.getElementById('registrationButton').addEventListener('click', function
 }, false);
 
     
-document.getElementById('addToCartButtonCustom').addEventListener('click', function() {
-  fbq('trackCustom', 'AddToCartCustom')
+ document.getElementById('addToCartButtonCustom').addEventListener('click', function(){
+    fbq('trackCustom', 'AddToCartCustom');
     fbq('trackCustom', 'AddToCartCustom', {currency: "USD", value: 21.00});
-    fbq('trackCustom', 'AddToCartCustom', {currency: "USD", value: 21.10},{eventID:"trackCustom.0930"});
-}, false);
-    document.getElementById('addToCartButtonSingle').addEventListener('click', function() {
-  fbq('trackSingle', '647451014972225', 'AddToCartSingle');
-     fbq('trackSingle', '647451014972225', 'AddToCartSingle', {currency: "USD", value: 22.00});
-     fbq('trackSingle', '647451014972225', 'AddToCartSingle',{currency: "USD", value: 22.10},{eventID:"trackSingle.0930"});
-}, false);
-    document.getElementById('addToCartButtonCustom').addEventListener('click', function() {
-  fbq('trackSingleCustom', '647451014972225', 'AddToCartSingleCustom');
-     fbq('trackSingleCustom', '647451014972225', 'AddToCartSingleCustom', {currency: "USD", value: 23.00});
-     fbq('trackSingleCustom', '647451014972225', 'AddToCartSingleCustom',{currency: "USD", value: 23.10},{eventID:"AddToCartSingleCustom.0930"});
-}, false);
+    fbq('trackCustom', 'AddToCartCustom', {currency: "USD", value: 21.10}, {eventID:"trackCustom.0930"});
+  },false);
+
+  document.getElementById('addToCartButtonSingle').addEventListener('click', function(){
+    fbq('trackSingle', '45202414779652', 'AddToCartSingle');
+    fbq('trackSingle', '45202414779652', 'AddToCartSingle', {currency: "USD", value: 22.00});
+    fbq('trackSingle', '45202414779652', 'AddToCartSingle', {currency: "USD", value: 22.10}, {eventID:"trackSingle.0930"});
+  },false);
+
+    document.getElementById('addToCartButtonSingleCustom').addEventListener('click', function(){
+    fbq('trackSingleCustom', '45202414779652', 'AddToCartSingleCustom');
+    fbq('trackSingleCustom', '45202414779652', 'AddToCartSingleCustom', {currency: "USD", value: 23.00});
+    fbq('trackSingleCustom', '45202414779652', 'AddToCartSingleCustom', {currency: "USD", value: 23.10}, {eventID:"AddToCartSingleCustom.0930"});
+  },false);    
     
 </script>
 </body>
