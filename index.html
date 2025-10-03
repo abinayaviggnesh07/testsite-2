@@ -44,6 +44,8 @@
         <li><button id="subcribeButton" type="button">Subscribe</button></li>
         <li><button id="registrationButton" type="button">Registration</button></li>
    <li><button id="addToCartButtonCustom" type="button">AddToCartCustom</button></li>
+   <li><button id="addToCartButtonSingle" type="button">AddToCartSingle</button></li>
+       <li><button id="addToCartButtonCustom" type="button">AddToCartSingleCustom</button></li>
     </ul>
     </div>
 
@@ -81,6 +83,16 @@ document.getElementById('addToCartButtonCustom').addEventListener('click', funct
   fbq('trackCustom', 'AddToCartCustom')
     fbq('trackCustom', 'AddToCartCustom', {currency: "USD", value: 21.00});
     fbq('trackCustom', 'AddToCartCustom', {currency: "USD", value: 21.10},{eventID:"trackCustom.0930"});
+}, false);
+    document.getElementById('addToCartButtonSingle').addEventListener('click', function() {
+  fbq('trackSingle', '647451014972225', 'AddToCartSingle');
+     fbq('trackSingle', '647451014972225', 'AddToCartSingle', {currency: "USD", value: 22.00});
+     fbq('trackSingle', '647451014972225', 'AddToCartSingle',{currency: "USD", value: 22.10},{eventID:"trackSingle.0930"});
+}, false);
+    document.getElementById('addToCartButtonCustom').addEventListener('click', function() {
+  fbq('trackSingleCustom', '647451014972225', 'AddToCartSingleCustom');
+     fbq('trackSingleCustom', '647451014972225', 'AddToCartSingleCustom', {currency: "USD", value: 23.00});
+     fbq('trackSingleCustom', '647451014972225', 'AddToCartSingleCustom',{currency: "USD", value: 23.10},{eventID:"AddToCartSingleCustom.0930"});
 }, false);
     
 </script>
