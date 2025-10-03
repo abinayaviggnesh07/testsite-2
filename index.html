@@ -55,13 +55,6 @@ document.getElementById('addToCartButton').addEventListener('click', function() 
   fbq('track', 'AddToCart');
 }, false);
 
-    </script>
-<script type="text/javascript">
-$('#addToCartButtonCustom').click(function() {
-    fbq('trackCustom', 'AddToCartCustom')
-    fbq('trackCustom', 'AddToCartCustom', {currency: "USD", value: 21.00});
-    fbq('trackCustom', 'AddToCartCustom', {currency: "USD", value: 21.10},{eventID:"trackCustom.0930"});
-  });
 
 document.getElementById('checkoutButton').addEventListener('click', function() {
   fbq('track', 'InitiateCheckout');
