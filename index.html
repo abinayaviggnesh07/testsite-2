@@ -11,7 +11,7 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', ' 886311714113663');
   fbq('init', ' 886311714113663');
-  fbq('track', 'PageView');
+  fbq('trackCustom', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=886311714113663&ev=PageView&noscript=1"
@@ -35,11 +35,11 @@
 
 <script type="text/javascript">
 document.getElementById('addToWishlistButton').addEventListener('click', function() {
-  fbq('track', 'AddToWishlist');
+  fbq('trackCustom', 'AddToWishlist');
 }, false);
 
 document.getElementById('addToCartButton').addEventListener('click', function() {
-  fbq('track', 'AddToCart', {
+  fbq('trackCustom', 'AddToCart', {
     value: '115',
     currency: 'USD',
     content_ids: ['123456'],
@@ -49,22 +49,22 @@ document.getElementById('addToCartButton').addEventListener('click', function() 
 }, false);
 
 document.getElementById('checkoutButton').addEventListener('click', function() {
-  fbq('track', 'InitiateCheckout');
+  fbq('trackCustom', 'InitiateCheckout');
 }, false);
 
 document.getElementById('purchaseButton').addEventListener('click', function() {
-  fbq('track', 'Purchase', {
+  fbq('trackCustom', 'Purchase', {
     value: 100,
     currency: 'USD',
   });
 }, false);
 
 document.getElementById('subcribeButton').addEventListener('click', function() {
-  fbq('track', 'Subscribe');
+  fbq('trackCustom', 'Subscribe');
 }, false);
 
 document.getElementById('registrationButton').addEventListener('click', function() {
-  fbq('track', 'CompleteRegistration');
+  fbq('trackCustom', 'CompleteRegistration');
 }, false);
 </script>
 </body>
