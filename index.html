@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INVALID_FBQ_METHOD Test</title>
+  <meta charset="UTF-8">
+  <title>INVALID_FBQ_METHOD_PARAMETER Test</title>
 </head>
 <body>
-    <h1>Test Page for INVALID_FBQ_METHOD Error</h1>
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '886311714113663'); // Replace 'YOUR_PIXEL_ID' with your actual Facebook Pixel ID
-        fbq('track', 'PageView'); // Valid call
-        fbq('invalidMethod', 'SomeEvent'); // This triggers the INVALID_FBQ_METHOD error
-    </script>
-    <noscript>
-        <img height="1" width="1" style="display:none"
-             src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" />
-    </noscript>
+  <h1>Test Page for INVALID_FBQ_METHOD_PARAMETER Error</h1>
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 12345); // INVALID: pixelID should be a string
+    fbq('track', {foo: 'bar'}); // INVALID: eventName should be a string
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=12345&ev=PageView&noscript=1" />
+  </noscript>
 </body>
 </html>
