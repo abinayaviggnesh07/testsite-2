@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>INVALID_FBQ_METHOD_PARAMETER Test</title>
+  <title>INVALID_PIXEL_ID Test</title>
 </head>
 <body>
-  <h1>Test Page for INVALID_FBQ_METHOD_PARAMETER Error</h1>
+  <h1>Test Page for INVALID_PIXEL_ID Error</h1>
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,12 +15,9 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 12345); // INVALID: pixelID should be a string
-    fbq('track', {foo: 'bar'}); // INVALID: eventName should be a string
+    fbq('init', 'not-a-valid-id'); // Invalid PixelID
+    fbq('init', '');               // Invalid PixelID
+    fbq('init', 'abc123');         // Invalid PixelID
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=12345&ev=PageView&noscript=1" />
-  </noscript>
 </body>
 </html>
