@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Meta Pixel INVALID_FBQ_METHOD Error Test Page</title>
+  <title>Meta Pixel Invalid Parameter Test Page</title>
   <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -13,8 +13,10 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1406268687713608');
-    fbq('track', 'PageView');
+    // INVALID PARAMETER: pixelID should be a string
+    fbq('init', 12345); // Should be fbq('init', '12345')
+    // INVALID PARAMETER: eventName should be a string
+    fbq('track', {foo: 'bar'}); // Should be fbq('track', 'EventName', {...})
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
@@ -24,7 +26,7 @@
   <meta name="facebook-domain-verification" content="qowwrhpyni79cf2pms3zixyrxoh3b4" />
 </head>
 <body>
-  <h2>Meta Pixel INVALID_FBQ_METHOD Error Test Page</h2>
+  <h2>Meta Pixel Invalid Parameter Test Page</h2>
   <div>
     <ul>
       <li><button id="addToWishlistButton" type="button">Add to Wishlist</button></li>
@@ -33,13 +35,13 @@
       <li><button id="purchaseButton" type="button">Purchase</button></li>
       <li><button id="subscribeButton" type="button">Subscribe</button></li>
       <li><button id="registrationButton" type="button">Registration</button></li>
+      <li><button id="invalidPurchaseButton" type="button">Invalid Purchase</button></li>
+      <li><button id="invalidCartButton" type="button">Invalid Cart</button></li>
     </ul>
   </div>
 
   <script type="text/javascript">
-    // Error scenario: INVALID_FBQ_METHOD
-    fbq('invalidMethod', 'SomeEvent');
-
+    // Valid event tracking
     document.getElementById('addToWishlistButton').addEventListener('click', function() {
       fbq('track', 'AddToWishlist');
     }, false);
@@ -71,6 +73,25 @@
 
     document.getElementById('registrationButton').addEventListener('click', function() {
       fbq('track', 'CompleteRegistration');
+    }, false);
+
+    // Invalid parameter scenarios
+    document.getElementById('invalidPurchaseButton').addEventListener('click', function() {
+      // value should be a number, currency should be a valid code
+      fbq('track', 'Purchase', {
+        value: 'ten', // Invalid: should be a number
+        currency: 'U', // Invalid: should be 'USD', 'EUR', etc.
+      });
+    }, false);
+
+    document.getElementById('invalidCartButton').addEventListener('click', function() {
+      // content_ids should be an array of strings, value should be a number
+      fbq('track', 'AddToCart', {
+        value: 'one hundred', // Invalid: should be a number
+        currency: 123, // Invalid: should be a string currency code
+        content_ids: '123456', // Invalid: should be an array
+        content_type: 789, // Invalid: should be a string
+      });
     }, false);
   </script>
 </body>
