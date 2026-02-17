@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Meta Pixel Invalid Parameter Test Page</title>
   <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -13,47 +11,46 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    // INVALID PARAMETER: pixelID should be a string
-    fbq('init', 12345); // Should be fbq('init', '12345')
-    // INVALID PARAMETER: eventName should be a string
-    fbq('track', {foo: 'bar'}); // Should be fbq('track', 'EventName', {...})
+    fbq('init', '1535327404243046');
+    fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1535327404243046&ev=PageView&noscript=1"
     />
   </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Additional Script with Invalid Pixel IDs -->
+  <script>
+    fbq('init', 'not-a-valid-id');
+    fbq('init', '');
+    fbq('init', 'abc123');
+  </script>
+
   <meta name="facebook-domain-verification" content="qowwrhpyni79cf2pms3zixyrxoh3b4" />
+  <title>pixel test page</title>
 </head>
 <body>
-  <h2>Meta Pixel Invalid Parameter Test Page</h2>
+  <h2>pixel test page</h2>
   <div>
     <ul>
       <li><button id="addToWishlistButton" type="button">Add to Wishlist</button></li>
       <li><button id="addToCartButton" type="button">Add to Cart</button></li>
       <li><button id="checkoutButton" type="button">Check Out</button></li>
       <li><button id="purchaseButton" type="button">Purchase</button></li>
-      <li><button id="subscribeButton" type="button">Subscribe</button></li>
+      <li><button id="subcribeButton" type="button">Subscribe</button></li>
       <li><button id="registrationButton" type="button">Registration</button></li>
-      <li><button id="invalidPurchaseButton" type="button">Invalid Purchase</button></li>
-      <li><button id="invalidCartButton" type="button">Invalid Cart</button></li>
     </ul>
   </div>
 
   <script type="text/javascript">
-    // Valid event tracking
     document.getElementById('addToWishlistButton').addEventListener('click', function() {
       fbq('track', 'AddToWishlist');
     }, false);
 
     document.getElementById('addToCartButton').addEventListener('click', function() {
-      fbq('track', 'AddToCart', {
-        value: 115,
-        currency: 'USD',
-        content_ids: ['123456'],
-        content_type: 'product',
-        source: 'marketingClient'
-      });
+      fbq('track', 'AddToCart');
     }, false);
 
     document.getElementById('checkoutButton').addEventListener('click', function() {
@@ -62,36 +59,17 @@
 
     document.getElementById('purchaseButton').addEventListener('click', function() {
       fbq('track', 'Purchase', {
-        value: 10,
-        currency: 'USD'
+        value: 100,
+        currency: 'USD',
       });
     }, false);
 
-    document.getElementById('subscribeButton').addEventListener('click', function() {
+    document.getElementById('subcribeButton').addEventListener('click', function() {
       fbq('track', 'Subscribe');
     }, false);
 
     document.getElementById('registrationButton').addEventListener('click', function() {
       fbq('track', 'CompleteRegistration');
-    }, false);
-
-    // Invalid parameter scenarios
-    document.getElementById('invalidPurchaseButton').addEventListener('click', function() {
-      // value should be a number, currency should be a valid code
-      fbq('track', 'Purchase', {
-        value: 'ten', // Invalid: should be a number
-        currency: 'U', // Invalid: should be 'USD', 'EUR', etc.
-      });
-    }, false);
-
-    document.getElementById('invalidCartButton').addEventListener('click', function() {
-      // content_ids should be an array of strings, value should be a number
-      fbq('track', 'AddToCart', {
-        value: 'one hundred', // Invalid: should be a number
-        currency: 123, // Invalid: should be a string currency code
-        content_ids: '123456', // Invalid: should be an array
-        content_type: 789, // Invalid: should be a string
-      });
     }, false);
   </script>
 </body>
