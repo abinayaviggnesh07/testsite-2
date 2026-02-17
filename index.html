@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Meta Pixel Error Test Page</title>
+  <title>Meta Pixel INVALID_FBQ_METHOD Error Test Page</title>
   <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -13,18 +13,18 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1535327404243046');
+    fbq('init', '1406268687713608');
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1535327404243046&ev=PageView&noscript=1"
+      src="https://www.facebook.com/tr?id=1406268687713608&ev=PageView&noscript=1"
     />
   </noscript>
   <meta name="facebook-domain-verification" content="qowwrhpyni79cf2pms3zixyrxoh3b4" />
 </head>
 <body>
-  <h2>Meta Pixel Error Test Page</h2>
+  <h2>Meta Pixel INVALID_FBQ_METHOD Error Test Page</h2>
   <div>
     <ul>
       <li><button id="addToWishlistButton" type="button">Add to Wishlist</button></li>
@@ -35,15 +35,12 @@
       <li><button id="registrationButton" type="button">Registration</button></li>
     </ul>
   </div>
-
   <script type="text/javascript">
-    // Error scenario: FBQ_NO_METHOD_NAME
-    fbq();
-
+    // Error scenario: INVALID_FBQ_METHOD
+    fbq('invalidMethod', 'SomeEvent');
     document.getElementById('addToWishlistButton').addEventListener('click', function() {
       fbq('track', 'AddToWishlist');
     }, false);
-
     document.getElementById('addToCartButton').addEventListener('click', function() {
       fbq('track', 'AddToCart', {
         value: 115,
@@ -53,22 +50,18 @@
         source: 'marketingClient'
       });
     }, false);
-
     document.getElementById('checkoutButton').addEventListener('click', function() {
       fbq('track', 'InitiateCheckout');
     }, false);
-
     document.getElementById('purchaseButton').addEventListener('click', function() {
       fbq('track', 'Purchase', {
         value: 10,
         currency: 'USD'
       });
     }, false);
-
     document.getElementById('subscribeButton').addEventListener('click', function() {
       fbq('track', 'Subscribe');
     }, false);
-
     document.getElementById('registrationButton').addEventListener('click', function() {
       fbq('track', 'CompleteRegistration');
     }, false);
