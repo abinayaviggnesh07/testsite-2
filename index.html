@@ -11,7 +11,11 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   //    fbq('init', '748361034679313');
  fbq('init', '1234567890');
- fbq('set', 'unsupportedKey', 'someValue', '1234567890');
+ // Purchase requires 'value' and 'currency'
+ fbq('track', 'Purchase');
+ // or missing just currency:
+ fbq('track', 'Purchase', {value: 29.99});
+
 
 </script>
 <noscript><img height="1" width="1" style="display:none"
