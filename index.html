@@ -36,7 +36,7 @@
   
 <script type="text/javascript">
 document.getElementById('addToWishlistButton').addEventListener('click', function() {
-  fbq('track', 'AddToWishlist');
+  fbq('track', 'AddToWishlist',{}, {eventID: '1234'});
 }, false);
 
 document.getElementById('addToCartButton').addEventListener('click', function() {
